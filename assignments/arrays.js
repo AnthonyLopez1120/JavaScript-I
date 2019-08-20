@@ -75,29 +75,67 @@ let inventory = [
 
 // ==== Challenge 1 ====
 // The dealer can't recall the information for a car with an id of 33 on his lot. Help the dealer find out which car has an id of 33 by logging the car's year, make, and model in the console log provided to you below:
-console.log(`Car 33 is a 2011 Jeep Wranger`);
+console.log('Car 33 is a ' + inventory[32].car_year +' ' + inventory[32].car_model);
 
 // ==== Challenge 2 ====
 // The dealer needs the information on the last car in their inventory.  What is the make and model of the last car in the inventory?  Log the make and model into the console.
 let lastCar = 0;
-console.log(inventory[49]);
+console.log(inventory[49].car_model, inventory[49].car_make);
 
 // ==== Challenge 3 ====
 // The marketing team wants the car models listed alphabetically on the website. Sort all the car model names into alphabetical order and log the results in the console
 //*I need to create a line of code that will take the values(model_names) of objects in an array named inventory */
-let carModels = inventory[1].car_model;
-let carModelsSorted = [];
-console.log();
+
+
+/*this line declares an empty array*/let carModels = [];
+
+/*this line declares a function called ModelsOnly it takes the paramenter 'arr'*/
+let modelsOnly=function(arr){
+  
+  let result =[];                        /*this line creates an empty array within the function*/
+  
+for (let i = 0; i<arr.length;i++        /*this line creates a for loop that will take the output of the index of of the 'arr' parameter to calculate length*/
+    ){
+      result.push(arr[i].car_model)     /*this line addes to the result array on line 95 the value of the car_model key*/
+    }
+    return result;                      /*when called, this will return the result array that is now filled with the values of arr[i].car_model*/
+}
+carModels=modelsOnly(inventory);        /*this assigns the array 'carModels' to the 'modelsOnly' function on line 92 and passes in the argument of the inventory array*/
+
+let carModelsSorted = carModels.sort(); /*this line creates a variable that is declared to the carModels that uses a '.sort' method which alphabatizes the values*/
+
+console.log(carModelsSorted);
+
+
 
 // ==== Challenge 4 ====
 // The accounting team needs all the years from every car on the lot. Create a new array from the dealer data containing only the car years and log the result in the console.
+
+
 let carYears = [];
-console.log();
+
+let years = function(ageOfcar){
+  let yearResult=[];
+  for (let i = 0; i<ageOfcar.length; i++
+){
+ yearResult.push(ageOfcar[i].car_year);
+}
+  return yearResult;
+};
+
+carYears = years(inventory);
+
+console.log(carYears);
 
 // ==== Challenge 5 ====
 // The car lot manager needs to find out how many cars are older than the year 2000. Using the carYears array you just created, find out how many cars were made before the year 2000 by populating the array oldCars and logging it's length.
-let oldCars = [];
-console.log();
+
+carYears.sort();
+
+console.log(carYears.sort())
+
+let oldCars = [carYears];
+console.log(oldCars);
 
 // ==== Challenge 6 ====
 // A buyer is interested in seeing only BMW and Audi cars within the inventory. Return an array that only contains BMW and Audi cars.  Once you have populated the BMWAndAudi array, use JSON.stringify() to show the results of the array in the console.
